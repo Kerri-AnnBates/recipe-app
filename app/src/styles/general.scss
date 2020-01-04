@@ -1,3 +1,44 @@
+@import url('https://fonts.googleapis.com/css?family=Londrina+Solid|Raleway&display=swap');
+
+* {
+   box-sizing: border-box;
+   margin: 0;
+   padding: 0;
+}
+
+html {
+   font-size: 62.5%;
+}
+
 body {
-   background-color: $bodyColor;
+   font-size: 1.6rem;
+   font-family: 'Raleway', sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+   font-family: 'Londrina Solid', cursive;
+   letter-spacing: 0.2rem;
+}
+
+a {
+   text-decoration: none;
+}
+
+img {
+   max-width: 100%;
+}
+
+.container {
+   max-width: 1000px;
+   width: 100%;
+   padding: 0 2rem;
+   margin: auto;
+}
+
+.flex-parent {
+   display: flex;
 }
