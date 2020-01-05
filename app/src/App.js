@@ -15,7 +15,6 @@ const RecipeContext = React.createContext();
 function App() {
   return (
     <div className="App">
-      <Header />
       <Route exact path='/' component={Home} />
       <Route path='/recipes' component={RecipeList} />
       <Route path='/edit' component={EditRecipe} />

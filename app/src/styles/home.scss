@@ -1,0 +1,49 @@
+.main-intro {
+   background: linear-gradient(90deg, #91204D 60%, #fff 50%);
+}
+
+.main-content {
+   display: grid;
+   grid-template-columns: .25fr repeat(3, 1fr);
+   grid-template-rows: auto;
+   grid-gap: 2rem;
+   padding: 6rem 0;
+
+   .grid-text {
+      grid-column: 1 / 2;
+
+      h1 {
+         // transform: rotate(90deg);
+         // transform-origin: top;
+         // margin-top: 8rem;
+         // font-size: 5rem;
+         -webkit-writing-mode: vertical-lr;
+         -ms-writing-mode: tb-lr;
+         writing-mode: vertical-lr;
+         font-size: 12rem;
+         letter-spacing: 1rem;
+         color: rgba(255, 255, 255, 0.4);
+         text-transform: uppercase;
+      }
+   }
+
+   .grid-sidebar {
+      grid-column: 2 / 3;
+      color: #fff;
+
+      h2 {
+         font-size: 3.3rem;
+      }
+
+      p {
+         padding-top: 2rem;
+         font-size: 2rem;
+      }
+   }
+
+   .grid-img {
+      grid-column: 3 / 5;
+      background: url('../img/home-hero.jpg') center center no-repeat;
+      background-size: cover;
+   }
+}
