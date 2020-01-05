@@ -43,6 +43,13 @@ p {
    margin: auto;
 }
 
+.medium-container {
+   max-width: 1000px;
+   width: 100%;
+   margin: auto;
+   padding: 0 2rem;
+}
+
 .flex-parent {
    display: flex;
 }

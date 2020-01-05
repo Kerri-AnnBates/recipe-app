@@ -50,30 +50,22 @@
 
 .featured {
    padding: 2rem;
-}
-
-.medium-container {
-   max-width: 1000px;
-   width: 100%;
-   margin: auto;
-   padding: 0 2rem;
+   height: 50rem;
+   display: flex;
+   align-items: center;
 }
 
 .f-grid {
    display: grid;
    grid-template-columns: repeat(3, 1fr);
    grid-gap: 4rem;
+}
 
-   .f-box-1,
-   .f-box-2,
-   .f-box-3 {
-      background-color: $lightAccentColor;
-      position: relative;
-      
-   }
-   .f-box-1::after,
-   .f-box-2::after,
-   .f-box-3::after {
+.f-box {
+   background-color: $lightAccentColor;
+   position: relative;
+
+   &::after {
       content: ' ';
       background-color: $rgbaBgAccentColor;
       position: absolute;
@@ -82,5 +74,14 @@
       left: 1.5rem;
       top: 1rem;
       z-index: -1;
+   }
+
+   .img-container {
+      height: 18rem;
+      overflow: hidden;
+   }
+
+   .content {
+      padding: 1rem;
    }
 }

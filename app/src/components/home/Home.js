@@ -1,5 +1,8 @@
 import React from 'react';
 import Header from '../header/Header';
+import ingredientImg from '../../img/ingredients.jpg';
+import listImg from '../../img/list.jpg';
+import favFoodImg from '../../img/fav-dish.jpg';
 
 function home() {
    return (
@@ -25,9 +28,30 @@ function home() {
             <div className="container">
                <div className="medium-container">
                   <div className="f-grid">
-                     <div className="f-box-1">1</div>
-                     <div className="f-box-2">2</div>
-                     <div className="f-box-3">3</div>
+                     <div className="f-box-1 f-box">
+                        <div className="img-container">
+                           <img src={favFoodImg} alt="Favorite salmon dish"/>
+                        </div>
+                        <div className="content">
+                           <p>Save all your favorite recipes.</p>
+                        </div>
+                     </div>
+                     <div className="f-box-2 f-box">
+                     <div className="img-container">
+                           <img src={listImg} alt="Person writing a list of items"/>
+                     </div>
+                        <div className="content">
+                           <p>Keep track of your list of recipes.</p>
+                        </div>
+                     </div>
+                     <div className="f-box-3 f-box">
+                        <div className="img-container">
+                           <img src={ingredientImg} alt="Cooking ingredients"/>
+                        </div>
+                        <div className="content">
+                           <p>See if you have enough ingredients for that reecipe.</p>
+                        </div>
+                     </div>
                   </div>
                </div>
             </div>
