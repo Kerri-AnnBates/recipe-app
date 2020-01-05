@@ -1,5 +1,5 @@
 .main-intro {
-   background: linear-gradient(90deg, #91204D 60%, #fff 50%);
+   background: linear-gradient(90deg, $mainColor 60%, #fff 50%);
 }
 
 .main-content {
@@ -45,5 +45,42 @@
       grid-column: 3 / 5;
       background: url('../img/home-hero.jpg') center center no-repeat;
       background-size: cover;
+   }
+}
+
+.featured {
+   padding: 2rem;
+}
+
+.medium-container {
+   max-width: 1000px;
+   width: 100%;
+   margin: auto;
+   padding: 0 2rem;
+}
+
+.f-grid {
+   display: grid;
+   grid-template-columns: repeat(3, 1fr);
+   grid-gap: 4rem;
+
+   .f-box-1,
+   .f-box-2,
+   .f-box-3 {
+      background-color: $lightAccentColor;
+      position: relative;
+      
+   }
+   .f-box-1::after,
+   .f-box-2::after,
+   .f-box-3::after {
+      content: ' ';
+      background-color: $rgbaBgAccentColor;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      left: 1.5rem;
+      top: 1rem;
+      z-index: -1;
    }
 }

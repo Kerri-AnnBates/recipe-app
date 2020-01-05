@@ -21,6 +21,17 @@ function home() {
                </div>
             </div>
          </div>
+         <div className="featured">
+            <div className="container">
+               <div className="medium-container">
+                  <div className="f-grid">
+                     <div className="f-box-1">1</div>
+                     <div className="f-box-2">2</div>
+                     <div className="f-box-3">3</div>
+                  </div>
+               </div>
+            </div>
+         </div>
       </div>
    )
 }
