@@ -9,8 +9,12 @@ import RecipeList from './components/recipe/RecipeList';
 import EditRecipe from './components/edit/EditRecipe';
 import Footer from './components/footer/Footer';
 
-// Contexts
-const RecipeContext = React.createContext();
+// Fontawesome icon library
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { fab } from '@fortawesome/free-brands-svg-icons';
+import { faSave, faList, faTasks } from '@fortawesome/free-solid-svg-icons';
+
+library.add(fab, faSave, faList, faTasks);
 
 function App() {
   return (

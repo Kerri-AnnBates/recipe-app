@@ -3,6 +3,7 @@ import Header from '../header/Header';
 import ingredientImg from '../../img/ingredients.jpg';
 import listImg from '../../img/list.jpg';
 import favFoodImg from '../../img/fav-dish.jpg';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 function home() {
    return (
@@ -29,24 +30,27 @@ function home() {
                <div className="medium-container">
                   <div className="f-grid">
                      <div className="f-box-1 f-box">
+                        <div className="icons"><FontAwesomeIcon icon="save" /></div>
                         <div className="img-container">
-                           <img src={favFoodImg} alt="Favorite salmon dish"/>
+                           <img src={favFoodImg} alt="Favorite salmon dish" />
                         </div>
                         <div className="content">
                            <p>Save all your favorite recipes.</p>
                         </div>
                      </div>
                      <div className="f-box-2 f-box">
-                     <div className="img-container">
-                           <img src={listImg} alt="Person writing a list of items"/>
-                     </div>
+                        <div className="icons"><FontAwesomeIcon icon="list" /></div>
+                        <div className="img-container">
+                           <img src={listImg} alt="Person writing a list of items" />
+                        </div>
                         <div className="content">
                            <p>Keep track of your list of recipes.</p>
                         </div>
                      </div>
                      <div className="f-box-3 f-box">
+                        <div className="icons"><FontAwesomeIcon icon="tasks" /></div>
                         <div className="img-container">
-                           <img src={ingredientImg} alt="Cooking ingredients"/>
+                           <img src={ingredientImg} alt="Cooking ingredients" />
                         </div>
                         <div className="content">
                            <p>See if you have enough ingredients for that reecipe.</p>
