@@ -3,6 +3,8 @@ import Header from '../header/Header';
 import ingredientImg from '../../img/ingredients.jpg';
 import listImg from '../../img/list.jpg';
 import favFoodImg from '../../img/fav-dish.jpg';
+import cookingImg from '../../img/cooking3.jpg';
+import groceryImg from '../../img/grocery3.jpg';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 function home() {
@@ -27,6 +29,7 @@ function home() {
          </div>
          <div className="featured">
             <div className="container">
+               <h2>Everything is more fun with efficiency.</h2>
                <div className="medium-container">
                   <div className="f-grid">
                      <div className="f-box-1 f-box">
@@ -57,6 +60,24 @@ function home() {
                         </div>
                      </div>
                   </div>
+               </div>
+            </div>
+         </div>
+         <div className="closing">
+            <div className="c-sides">
+               <div className="img-wrapper">
+                  <img src={groceryImg} alt="" />
+               </div>
+               <div className="c-text">
+                  <h3>Get prepared.</h3>
+               </div>
+            </div>
+            <div className="c-sides">
+               <div className="img-wrapper">
+                  <img src={cookingImg} alt="" />
+               </div>
+               <div className="c-text">
+                  <h3>To prepare your meal.</h3>
                </div>
             </div>
          </div>
