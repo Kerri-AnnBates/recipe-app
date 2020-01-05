@@ -1,6 +1,7 @@
 import React from 'react'
 import logo from '../../img/logo.png';
-import SearchForm from './SearchForm'
+import SearchForm from './SearchForm';
+import { Link, NavLink } from 'react-router-dom';
 
 function Header() {
     return (
@@ -10,8 +11,8 @@ function Header() {
                     <div className='logo'><img src={logo} alt="Recipes logo" /></div>
                     <nav>
                         <ul>
-                            <li>Home</li>
-                            <li>Recipes</li>
+                            <li><NavLink exact to="/">Home</NavLink></li>
+                            <li><NavLink to="/recipes">Recipes</NavLink></li>
                             <li>Login / SignUp</li>
                         </ul>
                     </nav>
