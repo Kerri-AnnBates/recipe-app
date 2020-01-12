@@ -25,10 +25,18 @@ router.post('/register', (req, res) => {
 router.post('/login', (req, res) => {
    const { username, password } = req.body;
 
-   User.findBy({username})
+   User.findBy({ username })
       .then(user => {
-         if (user && bcrypt.compareSync(password, user.password)) {            
-            res.status(200).json({ message: `Welcome ${username}!` });
+         if (user && bcrypt.compareSync(password, user.password)) {
+            // Generate the token
+            const token = generateToken(user);
+
+            // Send token to client
+            res.status(200)
+               .json({ 
+                  token, 
+                  message: `Welcome ${username}!` 
+               });
          } else {
             res.status(401).json({ message: 'Invalid username or password.' });
          }
@@ -38,5 +46,20 @@ router.post('/login', (req, res) => {
       })
 
 });
+
+// custom function to use jwt to generate a token.
+function generateToken(user) {
+   const secret = process.env.JWT_SECRET;
+   const payload = {
+      id: user.id,
+      username: user.username
+   }
+
+   const options = {
+      expiresIn: '1hr'
+   }
+
+   return jwt.sign(payload, process.env.JWT_SECRET, options);
+}
 
 module.exports = router;
