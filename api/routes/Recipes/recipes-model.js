@@ -2,6 +2,7 @@ const db = require('../../../database/dbConfig');
 
 module.exports = {
    get,
+   getUserRecipes,
    findById,
    insert,
    remove,
@@ -33,4 +34,9 @@ function update(data, id) {
    return db('recipes')
       .where('id', id)
       .update(data);
+}
+
+function getUserRecipes(userId) {
+   return db('recipes')
+      .where('user_id', userId);
 }
