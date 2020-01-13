@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const Recipes = require('./recipes-model');
 const Ingredients = require('../Ingredients/ingredients-model');
+const Steps = require('../Steps/steps-model');
 
 // Get all recipes
 router.get('/', (req, res) => {
@@ -43,5 +44,17 @@ router.get('/:id/ingredients', (req, res) => {
       })
 });
 
+// Get steps for a recipe
+router.get('/:id/steps', (req, res) => {
+   const id = req.params.id;
+
+   Steps.getStepsByRecipe(id)
+      .then(steps => {
+         res.status(200).json(steps);
+      })
+      .catch(err => {
+         res.status(500).json({ message: 'Problems fetching steps.', error: err });
+      })
+});
 
 module.exports = router;
