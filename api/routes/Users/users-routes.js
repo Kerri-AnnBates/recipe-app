@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const User = require('./users-model');
 const Recipes = require('../Recipes/recipes-model');
+const validateId = require('./users-middleware').validateId;
 
 // get all users
 router.get('/', (req, res) => {
@@ -14,7 +15,7 @@ router.get('/', (req, res) => {
 });
 
 // get user by id
-router.get('/:id', (req, res) => {
+router.get('/:id', validateId, (req, res) => {
    const id = req.params.id;
 
    User.findById(id)
@@ -27,7 +28,7 @@ router.get('/:id', (req, res) => {
 });
 
 // get recipes for a user.
-router.get('/:id/recipes', (req, res) => {
+router.get('/:id/recipes', validateId, (req, res) => {
    const id = req.params.id;
 
    Recipes.getUserRecipes(id)
