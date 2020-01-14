@@ -1,7 +1,10 @@
 const router = require('express').Router();
 const User = require('./users-model');
 const Recipes = require('../Recipes/recipes-model');
+
+// custom middlewares
 const validateId = require('./users-middleware').validateId;
+const restricted = require('../Auth/auth-middleware');
 
 // get all users
 router.get('/', (req, res) => {
@@ -28,7 +31,7 @@ router.get('/:id', validateId, (req, res) => {
 });
 
 // get recipes for a user.
-router.get('/:id/recipes', validateId, (req, res) => {
+router.get('/:id/recipes', restricted, validateId, (req, res) => {
    const id = req.params.id;
 
    Recipes.getUserRecipes(id)
