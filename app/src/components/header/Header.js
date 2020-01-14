@@ -13,7 +13,7 @@ function Header() {
                         <ul>
                             <li><NavLink exact to="/">Home</NavLink></li>
                             <li><NavLink to="/recipes">Recipes</NavLink></li>
-                            <li>Login / SignUp</li>
+                            <li><NavLink to="/login">Login / SignUp</NavLink></li>
                         </ul>
                     </nav>
                 </div>

@@ -12,6 +12,7 @@ import Footer from './components/footer/Footer';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fab } from '@fortawesome/free-brands-svg-icons';
 import { faSave, faList, faTasks } from '@fortawesome/free-solid-svg-icons';
+import Login from './components/forms/Login';
 
 library.add(fab, faSave, faList, faTasks);
 
@@ -19,6 +20,7 @@ function App() {
   return (
     <div className="App">
       <Route exact path='/' component={Home} />
+      <Route path='/login' component={Login} />
       <Route path='/recipes' component={RecipeList} />
       <Route path='/edit' component={EditRecipe} />
       <Footer />
