@@ -1,10 +1,16 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
 
 // Components
 import Header from '../header/Header';
 
 function Login() {
+   
+   const [userInput, setUserInput] = useState({
+      username: '',
+      password: ''
+   });
+
    return (
       <>
          <Header />
