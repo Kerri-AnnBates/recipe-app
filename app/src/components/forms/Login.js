@@ -7,9 +7,7 @@ import Header from '../header/Header';
 function Login() {
    return (
       <>
-         <div className="container">
-            <Header />
-         </div>
+         <Header />
          <div className="login">
             <div className="container">
                <div className="login-wrapper">

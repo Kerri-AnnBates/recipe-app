@@ -15,6 +15,23 @@ body {
    font-family: 'Raleway', sans-serif;
 }
 
+// Sticky footer
+html, body, #root {
+   height: 100%;
+}
+
+.App {
+   display: flex;
+   min-height: 100%;
+   flex-direction: column;
+}
+
+footer {
+   margin-top: auto;
+}
+
+// End Sticky footer
+
 h1,
 h2,
 h3,

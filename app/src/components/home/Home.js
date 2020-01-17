@@ -9,10 +9,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 function home() {
    return (
-      <div className="home">
-         <div className="main-intro">
-            <div className="container">
+      <>
                <Header />
+         <div className="main-intro">
                <div className="main-content">
                   <div className="grid-text">
                      <h1>Recipes</h1>
@@ -25,7 +24,6 @@ function home() {
                      Image here
                   </div>
                </div>
-            </div>
          </div>
          <div className="featured">
             <div className="container">
@@ -81,7 +79,7 @@ function home() {
                </div>
             </div>
          </div>
-      </div>
+      </>
    )
 }
 
