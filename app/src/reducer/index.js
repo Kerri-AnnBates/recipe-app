@@ -14,6 +14,8 @@ function reducer(state = initialState, action) {
          return {
             ...state,
             isFetching: true,
+            isLoggingIn: false,
+            loggedIn: false,
             error: null,
             recipes: []
          }
