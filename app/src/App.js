@@ -13,6 +13,7 @@ import { library } from '@fortawesome/fontawesome-svg-core';
 import { fab } from '@fortawesome/free-brands-svg-icons';
 import { faSave, faList, faTasks } from '@fortawesome/free-solid-svg-icons';
 import Login from './components/forms/Login';
+import Register from './components/forms/Register';
 
 library.add(fab, faSave, faList, faTasks);
 
@@ -23,6 +24,7 @@ function App() {
       <Route path='/login' component={Login} />
       <Route path='/recipes' component={RecipeList} />
       <Route path='/edit' component={EditRecipe} />
+      <Route path='/register' component={Register} />
       <Footer />
     </div>
   )

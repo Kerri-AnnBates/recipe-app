@@ -8,6 +8,10 @@ export const POST_DATA_START = 'POST_DATA_START';
 export const POST_DATA_SUCCESS = 'POST_DATA_SUCCESS';
 export const POST_DATA_FAIL = 'POST_DATA_FAIL';
 
+// Register user
+
+
+// Fetch recipes
 export const fetchRecipes = () => dispatch => {
    dispatch({ type: FETCH_DATA_START});
 
@@ -21,5 +25,9 @@ export const fetchRecipes = () => dispatch => {
       })
       .catch(err => {
          console.log(err);
+         dispatch({
+            type: FETCH_DATA_FAIL,
+            payload: err
+         })
       })
 }

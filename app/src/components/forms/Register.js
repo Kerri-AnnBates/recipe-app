@@ -4,8 +4,8 @@ import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
 // Components
 import Header from '../header/Header';
 
-function Login(props) {
-   
+function Register(props) {
+
    const [userInput, setUserInput] = useState({
       username: '',
       password: ''
@@ -19,13 +19,16 @@ function Login(props) {
       })
    }
 
-   const submitForm = (e) => {
+   // Register user
+   const saveUser = (e) => {
       e.preventDefault();
-   }
 
-   // Redirect to register form
-   const redirect = () => {
-      props.history.push('/register');
+      if(userInput.username && userInput.password) {
+         console.log('user saved');
+         props.history.push('/login');
+      } else {
+         console.log('Please enter a username and password');
+      }
    }
 
    return (
@@ -34,8 +37,8 @@ function Login(props) {
          <div className="login">
             <div className="container">
                <div className="login-wrapper">
-                  <h1>Log in</h1>
-                  <Form onSubmit={submitForm}>
+                  <h1>Sign Up</h1>
+                  <Form onSubmit={saveUser}>
                      <FormGroup>
                         <Label for="username">Username:</Label>
                         <Input 
@@ -43,7 +46,7 @@ function Login(props) {
                            name="username" 
                            id="username" 
                            placeholder="Enter your username" 
-                           value={userInput.username}
+                           value={userInput.username} 
                            onChange={handleChange}
                         />
                      </FormGroup>
@@ -54,12 +57,11 @@ function Login(props) {
                            name="password" 
                            id="password" 
                            placeholder="Enter your password" 
-                           value={userInput.password}
+                           value={userInput.password} 
                            onChange={handleChange}
                         />
                      </FormGroup>
-                     <Button color="primary">Login</Button>
-                     <Button color="secondary" onClick={redirect}>Register</Button>
+                     <Button color="warning">Submit</Button>
                   </Form>
                </div>
             </div>
@@ -68,4 +70,4 @@ function Login(props) {
    )
 }
 
-export default Login
+export default Register
