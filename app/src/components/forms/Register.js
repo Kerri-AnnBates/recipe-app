@@ -1,8 +1,12 @@
 import React, { useState } from 'react'
+import {registerUser} from '../../actions';
+
+// Reactstrap
 import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
 
 // Components
 import Header from '../header/Header';
+import { connect } from 'react-redux';
 
 function Register(props) {
 
@@ -23,9 +27,10 @@ function Register(props) {
    const saveUser = (e) => {
       e.preventDefault();
 
-      if(userInput.username && userInput.password) {
+      if (userInput.username && userInput.password) {
          console.log('user saved');
-         props.history.push('/login');
+         registerUser(setUserInput);
+         // props.history.push('/login');
       } else {
          console.log('Please enter a username and password');
       }
@@ -41,23 +46,23 @@ function Register(props) {
                   <Form onSubmit={saveUser}>
                      <FormGroup>
                         <Label for="username">Username:</Label>
-                        <Input 
-                           type="username" 
-                           name="username" 
-                           id="username" 
-                           placeholder="Enter your username" 
-                           value={userInput.username} 
+                        <Input
+                           type="username"
+                           name="username"
+                           id="username"
+                           placeholder="Enter your username"
+                           value={userInput.username}
                            onChange={handleChange}
                         />
                      </FormGroup>
                      <FormGroup>
                         <Label for="password">Password:</Label>
-                        <Input 
-                           type="password" 
-                           name="password" 
-                           id="password" 
-                           placeholder="Enter your password" 
-                           value={userInput.password} 
+                        <Input
+                           type="password"
+                           name="password"
+                           id="password"
+                           placeholder="Enter your password"
+                           value={userInput.password}
                            onChange={handleChange}
                         />
                      </FormGroup>
@@ -70,4 +75,11 @@ function Register(props) {
    )
 }
 
-export default Register
+const mapStateToProps = (state) => {
+   return {
+      isRegistering: state.isRegistering,
+      isRegistered: state.isRegistered
+   }
+}
+
+export default connect(mapStateToProps, { registerUser })(Register);
