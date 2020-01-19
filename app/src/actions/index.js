@@ -17,10 +17,11 @@ export const registerUser = (userData) => dispatch => {
    dispatch({type: REGISTER_USER_START});
 
    axios.post('http://localhost:5000/api/auth/register', userData)
-      .then(user => {
+      .then(res => {
+         // console.log(res.data);
          dispatch({
             type: REGISTER_USER_SUCCESS,
-            payload: user
+            payload: res.data
          });
       })
       .catch(error => {

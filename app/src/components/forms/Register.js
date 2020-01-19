@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { connect } from 'react-redux';
 import {registerUser} from '../../actions';
 
 // Reactstrap
@@ -6,10 +7,11 @@ import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
 
 // Components
 import Header from '../header/Header';
-import { connect } from 'react-redux';
 
 function Register(props) {
 
+   const { registerUser } = props;
+   
    const [userInput, setUserInput] = useState({
       username: '',
       password: ''
@@ -29,7 +31,8 @@ function Register(props) {
 
       if (userInput.username && userInput.password) {
          console.log('user saved');
-         registerUser(setUserInput);
+         console.log(userInput);
+         registerUser(userInput);
          // props.history.push('/login');
       } else {
          console.log('Please enter a username and password');
