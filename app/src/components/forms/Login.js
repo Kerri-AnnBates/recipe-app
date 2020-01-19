@@ -1,11 +1,15 @@
 import React, { useState } from 'react'
 import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
+import { connect } from 'react-redux';
+import { loginUser } from '../../actions';
 
 // Components
 import Header from '../header/Header';
 
 function Login(props) {
-   
+
+   const { loginUser } = props;
+
    const [userInput, setUserInput] = useState({
       username: '',
       password: ''
@@ -21,6 +25,11 @@ function Login(props) {
 
    const submitForm = (e) => {
       e.preventDefault();
+      loginUser(userInput);
+      setUserInput({
+         username: '',
+         password: ''
+      });
    }
 
    // Redirect to register form
@@ -38,22 +47,22 @@ function Login(props) {
                   <Form onSubmit={submitForm}>
                      <FormGroup>
                         <Label for="username">Username:</Label>
-                        <Input 
-                           type="username" 
-                           name="username" 
-                           id="username" 
-                           placeholder="Enter your username" 
+                        <Input
+                           type="username"
+                           name="username"
+                           id="username"
+                           placeholder="Enter your username"
                            value={userInput.username}
                            onChange={handleChange}
                         />
                      </FormGroup>
                      <FormGroup>
                         <Label for="password">Password:</Label>
-                        <Input 
-                           type="password" 
-                           name="password" 
-                           id="password" 
-                           placeholder="Enter your password" 
+                        <Input
+                           type="password"
+                           name="password"
+                           id="password"
+                           placeholder="Enter your password"
                            value={userInput.password}
                            onChange={handleChange}
                         />
@@ -68,4 +77,11 @@ function Login(props) {
    )
 }
 
-export default Login
+const mapStateToProps = (state) => {
+   return {
+      isLoggingIn: state.isLoggingIn,
+      loggedIn: state.loggedIn
+   }
+}
+
+export default connect(mapStateToProps, { loginUser })(Login)

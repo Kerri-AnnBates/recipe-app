@@ -4,7 +4,10 @@ import {
    FETCH_DATA_FAIL,
    REGISTER_USER_START,
    REGISTER_USER_SUCCESS,
-   REGISTER_USER_FAIL
+   REGISTER_USER_FAIL,
+   LOGIN_USER_START,
+   LOGIN_USER_SUCCESS,
+   LOGIN_USER_FAIL
 } from '../actions';
 
 const initialState = {
@@ -58,6 +61,27 @@ function reducer(state = initialState, action) {
             ...state,
             isRegistering: false,
             isRegistered: false,
+            error: action.payload
+         }
+      case LOGIN_USER_START:
+         return {
+            ...state,
+            isLoggingIn: true,
+            loggedIn: false,
+            error: null
+         }
+      case LOGIN_USER_SUCCESS:
+         return {
+            ...state,
+            isLoggingIn: false,
+            loggedIn: true,
+            error: null
+         }
+      case LOGIN_USER_FAIL:
+         return {
+            ...state,
+            isLoggingIn: false,
+            loggedIn: false,
             error: action.payload
          }
       default:
