@@ -34,6 +34,10 @@ function Register(props) {
          console.log(userInput);
          registerUser(userInput);
          // props.history.push('/login');
+         setUserInput({
+            username: '',
+            password: ''
+         });
       } else {
          console.log('Please enter a username and password');
       }
