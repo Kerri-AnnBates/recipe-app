@@ -19,7 +19,7 @@ router.get('/', (req, res) => {
 });
 
 // get user by id
-router.get('/:id', validateId, (req, res) => {
+router.get('/:id', restricted, validateId, authorizeId, (req, res) => {
    const id = req.params.id;
 
    User.findById(id)
