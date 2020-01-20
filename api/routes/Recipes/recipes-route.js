@@ -16,7 +16,7 @@ router.get('/', (req, res) => {
 });
 
 // Get recipe by id
-router.get('/:id', (req, res) => {
+router.get('/:id', validateRecipeId, (req, res) => {
    const id = req.params.id;
 
    Recipes.findByIdDetails(id)
@@ -57,5 +57,19 @@ router.get('/:id/steps', (req, res) => {
          res.status(500).json({ message: 'Problems fetching steps.', error: err });
       })
 });
+
+// custom middleware to validate recipe id.
+function validateRecipeId(req, res, next) {
+   const id = req.params.id;
+
+   Recipes.findById(id)
+      .then(recipe => {
+         if (recipe) {
+            next();
+         } else {
+            res.status(404).json({ message: 'No such recipe exist for that id.' });
+         }
+      })
+}
 
 module.exports = router;
