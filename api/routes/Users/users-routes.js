@@ -4,6 +4,7 @@ const Recipes = require('../Recipes/recipes-model');
 
 // custom middlewares
 const validateId = require('./users-middleware').validateId;
+const authorizeId = require('./users-middleware').authorizeId;
 const restricted = require('../Auth/auth-middleware');
 
 // get all users
@@ -31,7 +32,7 @@ router.get('/:id', validateId, (req, res) => {
 });
 
 // get recipes for a user.
-router.get('/:id/recipes', restricted, validateId, (req, res) => {
+router.get('/:id/recipes', restricted, validateId, authorizeId, (req, res) => {
    const id = req.params.id;
 
    Recipes.getUserRecipes(id)

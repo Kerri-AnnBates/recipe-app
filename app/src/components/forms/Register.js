@@ -31,7 +31,7 @@ function Register(props) {
 
       if (userInput.username && userInput.password) {
          console.log('user saved');
-         console.log(userInput);
+         
          registerUser(userInput);
          // props.history.push('/login');
          setUserInput({

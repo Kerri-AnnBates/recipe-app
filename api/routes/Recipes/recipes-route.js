@@ -2,6 +2,7 @@ const router = require('express').Router();
 const Recipes = require('./recipes-model');
 const Ingredients = require('../Ingredients/ingredients-model');
 const Steps = require('../Steps/steps-model');
+const restricted = require('../Auth/auth-middleware');
 
 // Get all recipes
 router.get('/', (req, res) => {
