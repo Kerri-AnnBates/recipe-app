@@ -22,7 +22,7 @@ function App() {
     <div className="App">
       <Route exact path='/' component={Home} />
       <Route path='/login' component={Login} />
-      <Route path='/recipes' component={RecipeList} />
+      <Route path='/user/:id/recipes' component={RecipeList} />
       <Route path='/edit' component={EditRecipe} />
       <Route path='/register' component={Register} />
       <Footer />

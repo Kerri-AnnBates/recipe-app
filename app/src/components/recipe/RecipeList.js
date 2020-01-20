@@ -1,15 +1,20 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { fetchRecipes } from '../../actions';
+import { fetchRecipes, fetchUserRecipes } from '../../actions';
 
 import Header from '../header/Header';
 
 function RecipeList(props) {
-    const { fetchRecipes } = props;
+    const { fetchRecipes, fetchUserRecipes } = props;
+    console.log(props.match.params.id);
+
+    // Get user id from url
+    const userId = parseInt(props.match.params.id, 10);
 
     // Fetch recipes on load
     useEffect(() => {
-        fetchRecipes();
+        // fetchRecipes();
+        fetchUserRecipes(userId);
     }, []);
 
     return (
@@ -32,5 +37,5 @@ function mapStateToProps(state) {
 
 // export default RecipeList;
 export default connect(
-    mapStateToProps, { fetchRecipes }
+    mapStateToProps, { fetchRecipes, fetchUserRecipes }
 )(RecipeList);

@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { axiosWithAuth } from '../protected/axiosWithAuth';
 
 export const FETCH_DATA_START = 'FETCH_DATA_START';
 export const FETCH_DATA_SUCCESS = 'FETCH_DATA_SUCCESS';
@@ -43,6 +44,10 @@ export const loginUser = (creds) => (dispatch) => {
    axios.post('http://localhost:5000/api/auth/login', creds)
       .then(res => {
          console.log(res.data);
+         
+         // save token
+         localStorage.setItem('token', res.data.token);
+
          dispatch({
             type: LOGIN_USER_SUCCESS,
             payload: res.data
@@ -75,4 +80,28 @@ export const fetchRecipes = () => dispatch => {
             payload: err
          });
       });
+}
+
+// fet recipes by user id
+export const fetchUserRecipes = (id) => dispatch => {
+   dispatch({ type: FETCH_DATA_START });
+
+   axiosWithAuth().get(`http://localhost:5000/api/users/${id}/recipes`)
+      .then(res => {
+         console.log(res);
+
+         dispatch({
+            type: FETCH_DATA_SUCCESS,
+            payload: res.data
+         });
+
+      })
+      .catch(error => {
+         console.log(error);
+
+         dispatch({
+            type: FETCH_DATA_FAIL,
+            payload: error
+         });
+      })
 }
