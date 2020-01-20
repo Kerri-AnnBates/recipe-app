@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import {registerUser} from '../../actions';
 
 // Reactstrap
-import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
+import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
 
 // Components
 import Header from '../header/Header';

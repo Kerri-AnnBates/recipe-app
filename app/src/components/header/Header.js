@@ -1,7 +1,7 @@
 import React from 'react'
 import logo from '../../img/logo.png';
-import SearchForm from './SearchForm';
-import { Link, NavLink } from 'react-router-dom';
+// import SearchForm from './SearchForm';
+import { NavLink } from 'react-router-dom';
 
 function Header() {
     return (
