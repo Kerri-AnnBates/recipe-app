@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 // import './styles/app.scss';
 import { Route } from 'react-router-dom';
+import { fetchUserProfile } from './actions';
+import { connect } from 'react-redux';
 
 // Components
 import Home from './components/home/Home';
@@ -14,15 +16,23 @@ import { fab } from '@fortawesome/free-brands-svg-icons';
 import { faSave, faList, faTasks } from '@fortawesome/free-solid-svg-icons';
 import Login from './components/forms/Login';
 import Register from './components/forms/Register';
+import PrivateRoute from './protected/PrivateRoute';
 
 library.add(fab, faSave, faList, faTasks);
 
-function App() {
+function App(props) {
+  const { fetchUserProfile } = props;
+
+  useEffect(() => {
+    // keep user logged in for as long as the token is good for
+    fetchUserProfile();
+  }, [])
+
   return (
     <div className="App">
       <Route exact path='/' component={Home} />
       <Route path='/login' component={Login} />
-      <Route path='/user/:id/recipes' component={RecipeList} />
+      <PrivateRoute path='/recipes' component={RecipeList} />
       <Route path='/edit' component={EditRecipe} />
       <Route path='/register' component={Register} />
       <Footer />
@@ -30,4 +40,15 @@ function App() {
   )
 }
 
-export default App;
+function mapStateToProps(state) {
+  return {
+    currentUser: state.currentUser
+  }
+}
+
+// export default RecipeList;
+export default connect(
+  mapStateToProps, { fetchUserProfile }
+)(App);
+
+// export default App;

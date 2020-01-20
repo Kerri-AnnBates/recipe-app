@@ -7,7 +7,10 @@ import {
    REGISTER_USER_FAIL,
    LOGIN_USER_START,
    LOGIN_USER_SUCCESS,
-   LOGIN_USER_FAIL
+   LOGIN_USER_FAIL,
+   FETCH_PROFILE_START,
+   FETCH_PROFILE_SUCCESS,
+   FETCH_PROFILE_FAIL
 } from '../actions';
 
 const initialState = {
@@ -17,7 +20,8 @@ const initialState = {
    isRegistering: false,
    isRegistered: false,
    error: null,
-   recipes: []
+   recipes: [],
+   currentUser: {}
 }
 
 function reducer(state = initialState, action) {
@@ -68,6 +72,7 @@ function reducer(state = initialState, action) {
             ...state,
             isLoggingIn: true,
             loggedIn: false,
+            currentUser: {},
             error: null
          }
       case LOGIN_USER_SUCCESS:
@@ -75,6 +80,7 @@ function reducer(state = initialState, action) {
             ...state,
             isLoggingIn: false,
             loggedIn: true,
+            currentUser: action.payload,
             error: null
          }
       case LOGIN_USER_FAIL:
@@ -82,6 +88,25 @@ function reducer(state = initialState, action) {
             ...state,
             isLoggingIn: false,
             loggedIn: false,
+            currentUser: {},
+            error: action.payload
+         }
+      case FETCH_PROFILE_START:
+         return {
+            ...state,
+            currentUser: {},
+            error: null
+         }
+      case FETCH_PROFILE_SUCCESS:
+         return {
+            ...state,
+            currentUser: action.payload,
+            error: null
+         }
+      case FETCH_PROFILE_FAIL:
+         return {
+            ...state,
+            currentUser: {},
             error: action.payload
          }
       default:

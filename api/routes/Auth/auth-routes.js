@@ -35,7 +35,11 @@ router.post('/login', (req, res) => {
             res.status(200)
                .json({ 
                   token, 
-                  message: `Welcome ${username}!` 
+                  message: `Welcome ${username}!`,
+                  userInfo: {
+                     id: user.id,
+                     username: user.username
+                  } 
                });
          } else {
             res.status(401).json({ message: 'Invalid username or password.' });
