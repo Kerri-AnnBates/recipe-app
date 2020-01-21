@@ -5,6 +5,7 @@ import { loginUser } from '../../actions';
 
 // Components
 import Header from '../header/Header';
+import { Link } from 'react-router-dom';
 
 function Login(props) {
 
@@ -68,7 +69,8 @@ function Login(props) {
                         />
                      </FormGroup>
                      <Button color="primary">Login</Button>
-                     <Button color="secondary" onClick={redirect}>Register</Button>
+                     {/* <Button color="secondary" onClick={redirect}>Register</Button> */}
+                     <Link to="/register">Don't have an account?</Link>
                   </Form>
                </div>
             </div>
