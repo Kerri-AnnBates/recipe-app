@@ -5,10 +5,6 @@ export const FETCH_DATA_START = 'FETCH_DATA_START';
 export const FETCH_DATA_SUCCESS = 'FETCH_DATA_SUCCESS';
 export const FETCH_DATA_FAIL = 'FETCH_DATA_FAIL';
 
-export const FETCH_PROFILE_START = 'FETCH_PROFILE_START';
-export const FETCH_PROFILE_SUCCESS = 'FETCH_PROFILE_SUCCESS';
-export const FETCH_PROFILE_FAIL = 'FETCH_PROFILE_FAIL';
-
 export const POST_DATA_START = 'POST_DATA_START';
 export const POST_DATA_SUCCESS = 'POST_DATA_SUCCESS';
 export const POST_DATA_FAIL = 'POST_DATA_FAIL';
@@ -54,7 +50,7 @@ export const loginUser = (creds) => (dispatch) => {
 
          dispatch({
             type: LOGIN_USER_SUCCESS,
-            payload: res.data.userInfo
+            payload: res.data
          });
       })
       .catch(error => {
@@ -63,41 +59,6 @@ export const loginUser = (creds) => (dispatch) => {
             payload: error
          });
       });
-}
-
-// get user's profile
-export const fetchUserProfile = () => dispatch => {
-   dispatch({ type: FETCH_PROFILE_START});
-   const token = localStorage.token;
-
-   if(token) {
-      axiosWithAuth().get('http://localhost:5000/api/users/profile')
-         .then(res => {
-            console.log('From actions: ',res.data);
-            const user = {
-               username: res.data.username,
-               password: res.data.password
-            }
-            const userInfo = {
-               id: res.data.id,
-               username: res.data.username
-            }
-
-            loginUser(user);
-            dispatch({ 
-               type: FETCH_PROFILE_SUCCESS,
-               payload: userInfo
-            });
-         })
-         .catch(error => {
-            dispatch({
-               type: FETCH_PROFILE_FAIL,
-               payload: error
-            });
-         })
-   } else {
-      console.log('no token provided');
-   }
 }
 
 // Fetch all recipes

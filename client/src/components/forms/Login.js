@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
 import { connect } from 'react-redux';
 import { loginUser } from '../../actions';
+import {Redirect} from 'react-router-dom';
 
 // Components
 import Header from '../header/Header';
@@ -9,7 +10,7 @@ import { Link } from 'react-router-dom';
 
 function Login(props) {
 
-   const { loginUser } = props;
+   const { loginUser, loggedIn } = props;
 
    const [userInput, setUserInput] = useState({
       username: '',
@@ -33,10 +34,9 @@ function Login(props) {
       });
    }
 
-   // Redirect to register form
-   const redirect = () => {
-      props.history.push('/register');
-   }
+   // if (loggedIn) {
+   //    return <Redirect to="/recipes" />;
+   // }
 
    return (
       <>

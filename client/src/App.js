@@ -1,7 +1,6 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 // import './styles/app.scss';
 import { Route } from 'react-router-dom';
-import { fetchUserProfile } from './actions';
 import { connect } from 'react-redux';
 
 // Components
@@ -20,13 +19,7 @@ import PrivateRoute from './protected/PrivateRoute';
 
 library.add(fab, faSave, faList, faTasks);
 
-function App(props) {
-  const { fetchUserProfile } = props;
-
-  useEffect(() => {
-    // keep user logged in for as long as the token is good for
-    fetchUserProfile();
-  }, [])
+function App() {
 
   return (
     <div className="App">
@@ -40,15 +33,4 @@ function App(props) {
   )
 }
 
-function mapStateToProps(state) {
-  return {
-    currentUser: state.currentUser
-  }
-}
-
-// export default RecipeList;
-export default connect(
-  mapStateToProps, { fetchUserProfile }
-)(App);
-
-// export default App;
+export default App;

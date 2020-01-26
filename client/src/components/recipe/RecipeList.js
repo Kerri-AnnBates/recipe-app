@@ -1,24 +1,26 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { fetchUserRecipes, fetchUserProfile } from '../../actions';
-
+import { fetchUserRecipes } from '../../actions';
+import {axiosWithAuth} from '../../protected/axiosWithAuth';
 import Header from '../header/Header';
 
 function RecipeList(props) {
-    const { fetchUserRecipes, currentUser, fetchUserProfile, profileFetched, recipes } = props;
+    const { fetchUserRecipes, recipes } = props;
 
-    // Get user id from reducer state
-    console.log('user:', currentUser);
-    const userId = currentUser.id;
+    async function getProfile() {
+        // Wait for profile to be fetched.
+        return await axiosWithAuth().get('http://localhost:5000/api/users/profile');
+        
+    }
 
     // Fetch recipes on load
     useEffect(() => {
-        console.log('fetched profile', profileFetched);
-        fetchUserRecipes(userId);
-        
-    }, [profileFetched]);
+        // Then get recipes after user info has been fetched.
+        console.log('calling...')
+        getProfile().then(res => fetchUserRecipes(res.data.id));
+    }, []);
 
-    console.log('recipes:', recipes);
+    // console.log('recipes:', recipes);
 
     return (
         <>
@@ -26,7 +28,8 @@ function RecipeList(props) {
             <div className="recipe-list">
                 <div className="container">
                     <h1>Your Recipes</h1>
-                    {recipes.map(recipe => (
+                    {recipes.length === 0 ? <p>You have no recipes yet...</p> :
+                    recipes.map(recipe => (
                         <h3 key={recipe.id}>{recipe.title}</h3>
                     ))}
                 </div>
@@ -37,13 +40,11 @@ function RecipeList(props) {
 
 function mapStateToProps(state) {
     return {
-        recipes: state.recipes,
-        currentUser: state.currentUser,
-        profileFetched: state.profileFetched
+        recipes: state.recipes
     }
 }
 
 // export default RecipeList;
 export default connect(
-    mapStateToProps, { fetchUserRecipes, fetchUserProfile }
+    mapStateToProps, { fetchUserRecipes }
 )(RecipeList);
