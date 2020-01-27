@@ -5,7 +5,6 @@ import { axiosWithAuth } from '../../protected/axiosWithAuth';
 import { Button } from 'reactstrap';
 
 // Components
-import Header from '../header/Header';
 import RecipeCard from './RecipeCard';
 
 function RecipeList(props) {
@@ -28,7 +27,6 @@ function RecipeList(props) {
 
     return (
         <>
-            <Header />
             <div className="recipe-list">
                 <div className="container">
                     <h1>Your Recipes</h1>

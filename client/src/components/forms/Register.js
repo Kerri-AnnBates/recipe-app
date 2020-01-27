@@ -5,13 +5,10 @@ import { registerUser } from '../../redux/actions';
 // Reactstrap
 import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
 
-// Components
-import Header from '../header/Header';
-
 function Register(props) {
 
    const { registerUser } = props;
-   
+
    const [userInput, setUserInput] = useState({
       username: '',
       password: ''
@@ -31,7 +28,7 @@ function Register(props) {
 
       if (userInput.username && userInput.password) {
          console.log('user saved');
-         
+
          registerUser(userInput);
          // props.history.push('/login');
          setUserInput({
@@ -45,7 +42,6 @@ function Register(props) {
 
    return (
       <>
-         <Header />
          <div className="login">
             <div className="container">
                <div className="login-wrapper">

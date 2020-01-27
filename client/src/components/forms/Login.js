@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import { loginUser } from '../../redux/actions';
 
 // Components
-import Header from '../header/Header';
 import { Link } from 'react-router-dom';
 
 function Login(props) {
@@ -39,7 +38,6 @@ function Login(props) {
 
    return (
       <>
-         <Header />
          <div className="login">
             <div className="container">
                <div className="login-wrapper">
