@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { fetchUserRecipes } from '../../redux/actions';
 import {axiosWithAuth} from '../../protected/axiosWithAuth';
 import Header from '../header/Header';
+import RecipeCard from './RecipeCard';
 
 function RecipeList(props) {
     const { fetchUserRecipes, recipes } = props;
@@ -30,7 +31,10 @@ function RecipeList(props) {
                     <h1>Your Recipes</h1>
                     {recipes.length === 0 ? <p>You have no recipes yet...</p> :
                     recipes.map(recipe => (
-                        <h3 key={recipe.id}>{recipe.title}</h3>
+                        <RecipeCard 
+                            key={recipe.id}
+                            recipe={recipe}
+                        />
                     ))}
                 </div>
             </div>
