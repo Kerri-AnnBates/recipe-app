@@ -5,6 +5,9 @@ import {
    FETCH_DATA_START,
    FETCH_DATA_SUCCESS,
    FETCH_DATA_FAIL,
+   ADD_DATA_START,
+   ADD_DATA_SUCCESS,
+   ADD_DATA_FAIL
 } from '../types';
 
 
@@ -51,4 +54,11 @@ export const fetchUserRecipes = (id) => dispatch => {
             payload: error
          });
       })
+}
+
+// Post a recipe
+export const addRecipe = () => dispatch => {
+   dispatch({type: ADD_DATA_START});
+
+   
 }
