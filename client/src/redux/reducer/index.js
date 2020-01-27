@@ -8,7 +8,7 @@ import {
    LOGIN_USER_START,
    LOGIN_USER_SUCCESS,
    LOGIN_USER_FAIL,
-} from '../actions';
+} from '../actions/types';
 
 const initialState = {
    isFetching: false,

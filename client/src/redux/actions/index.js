@@ -1,21 +1,17 @@
 import axios from 'axios';
 import { axiosWithAuth } from '../../protected/axiosWithAuth';
 
-export const FETCH_DATA_START = 'FETCH_DATA_START';
-export const FETCH_DATA_SUCCESS = 'FETCH_DATA_SUCCESS';
-export const FETCH_DATA_FAIL = 'FETCH_DATA_FAIL';
-
-export const POST_DATA_START = 'POST_DATA_START';
-export const POST_DATA_SUCCESS = 'POST_DATA_SUCCESS';
-export const POST_DATA_FAIL = 'POST_DATA_FAIL';
-
-export const REGISTER_USER_START = 'REGISTER_USER_START';
-export const REGISTER_USER_SUCCESS = 'REGISTER_USER_SUCCESS';
-export const REGISTER_USER_FAIL = 'REGISTER_USER_FAIL';
-
-export const LOGIN_USER_START = 'LOGIN_USER_START';
-export const LOGIN_USER_SUCCESS = 'LOGIN_USER_SUCCESS';
-export const LOGIN_USER_FAIL = 'LOGIN_USER_FAIL';
+import {
+   FETCH_DATA_START,
+   FETCH_DATA_SUCCESS,
+   FETCH_DATA_FAIL,
+   REGISTER_USER_START,
+   REGISTER_USER_SUCCESS,
+   REGISTER_USER_FAIL,
+   LOGIN_USER_START,
+   LOGIN_USER_SUCCESS,
+   LOGIN_USER_FAIL,
+} from '../actions/types';
 
 // Register user
 export const registerUser = (userData) => dispatch => {
