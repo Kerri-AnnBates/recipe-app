@@ -1,8 +1,7 @@
 import React, { useState } from 'react'
 import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
 import { connect } from 'react-redux';
-import { loginUser } from '../../actions';
-import {Redirect} from 'react-router-dom';
+import { loginUser } from '../../redux/actions';
 
 // Components
 import Header from '../header/Header';

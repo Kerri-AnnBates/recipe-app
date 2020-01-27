@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { connect } from 'react-redux';
-import {registerUser} from '../../actions';
+import { registerUser } from '../../redux/actions';
 
 // Reactstrap
 import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
