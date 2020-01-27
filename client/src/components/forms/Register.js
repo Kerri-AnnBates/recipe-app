@@ -44,7 +44,7 @@ function Register(props) {
       <>
          <div className="login">
             <div className="container">
-               <div className="login-wrapper">
+               <div className="form-wrapper">
                   <h1>Sign Up</h1>
                   <Form onSubmit={saveUser}>
                      <FormGroup>

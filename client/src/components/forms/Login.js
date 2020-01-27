@@ -40,7 +40,7 @@ function Login(props) {
       <>
          <div className="login">
             <div className="container">
-               <div className="login-wrapper">
+               <div className="form-wrapper">
                   <h1>Log in</h1>
                   <Form onSubmit={submitForm}>
                      <FormGroup>
