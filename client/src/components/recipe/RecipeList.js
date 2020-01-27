@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { fetchUserRecipes } from '../../redux/actions';
+import { fetchUserRecipes } from '../../redux/actions/recipe/recipe-actions';
 import { axiosWithAuth } from '../../protected/axiosWithAuth';
 import { Button } from 'reactstrap';
 
@@ -23,14 +23,17 @@ function RecipeList(props) {
         getProfile().then(res => fetchUserRecipes(res.data.id));
     }, []);
 
-    // console.log('recipes:', recipes);
+    // redirect to add recipe page
+    function toAddRecipe() {
+        props.history.push('/add-recipe');
+    }
 
     return (
         <>
             <div className="recipe-list">
                 <div className="container">
                     <h1>Your Recipes</h1>
-                    <Button color="success">Add Recipe</Button>
+                    <Button color="success" onClick={toAddRecipe}>Add Recipe</Button>
                     <div className="recipes-wrapper">
                         {recipes.length === 0 ? <p>You have no recipes yet...</p> :
                             recipes.map(recipe => (
