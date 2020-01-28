@@ -36,7 +36,7 @@ router.get('/profile', restricted, (req, res) => {
 // get user by id
 router.get('/:id', restricted, validateId, authorizeId, (req, res) => {
    const id = req.params.id;
-   console.log(req)
+   
    User.findById(id)
       .then(user => {
          res.status(200).json(user);
@@ -57,6 +57,19 @@ router.get('/:id/recipes', restricted, validateId, authorizeId, (req, res) => {
       .catch(err => {
          res.status(500).json({ message: 'Problems getting user recipes.', error: err });
       });
+});
+
+// Post Recipes
+router.post('/:id/recipes', restricted, (req, res) => {
+   const data = req.body;
+
+   Recipes.insert(data)
+      .then(recipe => {
+         res.status(201).json(recipe);
+      })
+      .catch(error => {
+         res.status(500).json({ message: 'Problems adding recipe.' });
+      })
 });
 
 module.exports = router;
