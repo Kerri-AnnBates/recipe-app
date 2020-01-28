@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { fetchUserRecipes } from '../../redux/actions/recipe/recipe-actions';
+import { fetchUserRecipes } from '../../redux/actions/recipe-actions';
 import { axiosWithAuth } from '../../protected/axiosWithAuth';
 import { Button } from 'reactstrap';
 
