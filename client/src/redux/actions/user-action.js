@@ -7,7 +7,7 @@ import {
    REGISTER_USER_START,
    REGISTER_USER_SUCCESS,
    REGISTER_USER_FAIL
-} from '../types';
+} from './types';
 
 // Log in user
 export const loginUser = (creds) => (dispatch) => {

@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { axiosWithAuth } from '../../../protected/axiosWithAuth';
+import { axiosWithAuth } from '../../protected/axiosWithAuth';
 
 import {
    FETCH_DATA_START,
@@ -8,7 +8,7 @@ import {
    ADD_DATA_START,
    ADD_DATA_SUCCESS,
    ADD_DATA_FAIL
-} from '../types';
+} from './types';
 
 
 // Fetch all recipes
