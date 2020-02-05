@@ -1,7 +1,6 @@
 import React from 'react';
 // import './styles/app.scss';
 import { Route } from 'react-router-dom';
-import { connect } from 'react-redux';
 
 // Components
 import Home from './components/home/Home';

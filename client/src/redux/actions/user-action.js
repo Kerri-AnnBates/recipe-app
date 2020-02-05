@@ -18,7 +18,7 @@ export const loginUser = (creds) => (dispatch) => {
          console.log(res.data);
 
          // save token
-         localStorage.setItem('token', res.data.token);
+         // localStorage.setItem('token', res.data.token);
 
          dispatch({
             type: LOGIN_USER_SUCCESS,

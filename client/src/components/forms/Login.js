@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 
 function Login(props) {
 
-   const { loginUser, loggedIn } = props;
+   const { loginUser } = props;
 
    const [userInput, setUserInput] = useState({
       username: '',

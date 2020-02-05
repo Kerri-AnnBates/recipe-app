@@ -6,8 +6,6 @@ import {
    FETCH_DATA_SUCCESS,
    FETCH_DATA_FAIL,
    ADD_DATA_START,
-   ADD_DATA_SUCCESS,
-   ADD_DATA_FAIL
 } from './types';
 
 
@@ -38,7 +36,7 @@ export const fetchUserRecipes = (id) => dispatch => {
 
    axiosWithAuth().get(`http://localhost:5000/api/users/${id}/recipes`)
       .then(res => {
-         console.log(res.data);
+         // console.log(res.data);
 
          dispatch({
             type: FETCH_DATA_SUCCESS,

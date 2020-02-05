@@ -14,6 +14,7 @@ const initialState = {
    isFetching: false,
    isLoggingIn: false,
    loggedIn: false,
+   user: '',
    isRegistering: false,
    isRegistered: false,
    error: null,
@@ -72,10 +73,12 @@ function reducer(state = initialState, action) {
             error: null
          }
       case LOGIN_USER_SUCCESS:
+         localStorage.setItem('token', action.payload.token);
          return {
             ...state,
             isLoggingIn: false,
             loggedIn: true,
+            user: action.payload.userInfo,
             error: null
          }
       case LOGIN_USER_FAIL:
