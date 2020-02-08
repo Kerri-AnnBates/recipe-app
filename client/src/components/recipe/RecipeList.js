@@ -8,54 +8,57 @@ import { Button } from 'reactstrap';
 import RecipeCard from './RecipeCard';
 
 function RecipeList(props) {
-    const { fetchUserRecipes, recipes } = props;
+	const { fetchUserRecipes, recipes, loggedInUser, loggedIn } = props;
 
-    async function getProfile() {
-        // Wait for profile to be fetched.
-        return await axiosWithAuth().get('http://localhost:5000/api/users/profile');
+	console.log("Logged in user:", loggedInUser, "logged in:", loggedIn);
 
-    }
+	async function getProfile() {
+		// Wait for profile to be fetched.
+		return await axiosWithAuth().get('http://localhost:5000/api/users/profile');
 
-    // Fetch recipes on load
-    useEffect(() => {
-        // Then get recipes after user info has been fetched.
-        console.log('calling...')
-        getProfile().then(res => fetchUserRecipes(res.data.id));
-    }, []);
+	}
 
-    // redirect to add recipe page
-    function toAddRecipe() {
-        props.history.push('/add-recipe');
-    }
+	// Fetch recipes on load
+	useEffect(() => {
+		// Then get recipes after user info has been fetched.
+		getProfile().then(res => fetchUserRecipes(res.data.id));
+	}, []);
 
-    return (
-        <>
-            <div className="recipe-list">
-                <div className="container">
-                    <h1>Your Recipes</h1>
-                    <Button color="success" onClick={toAddRecipe}>Add Recipe</Button>
-                    <div className="recipes-wrapper">
-                        {recipes.length === 0 ? <p>You have no recipes yet...</p> :
-                            recipes.map(recipe => (
-                                <RecipeCard
-                                    key={recipe.id}
-                                    recipe={recipe}
-                                />
-                            ))}
-                    </div>
-                </div>
-            </div>
-        </>
-    )
+	// redirect to add recipe page
+	function toAddRecipe() {
+		props.history.push('/add-recipe');
+	}
+
+	return (
+		<>
+			<div className="recipe-list">
+				<div className="container">
+					<h1>Your Recipes</h1>
+					<Button color="success" onClick={toAddRecipe}>Add Recipe</Button>
+					<div className="recipes-wrapper">
+						{recipes.length === 0 ? <p>You have no recipes yet...</p> :
+							recipes.map(recipe => (
+								<RecipeCard
+									key={recipe.id}
+									recipe={recipe}
+								/>
+							))}
+					</div>
+				</div>
+			</div>
+		</>
+	)
 }
 
 function mapStateToProps(state) {
-    return {
-        recipes: state.recipes
-    }
+	return {
+		recipes: state.recipesReducer.recipes,
+		loggedInUser: state.userReducer.loggedInUser,
+		loggedIn: state.userReducer.loggedIn
+	}
 }
 
 // export default RecipeList;
 export default connect(
-    mapStateToProps, { fetchUserRecipes }
+	mapStateToProps, { fetchUserRecipes }
 )(RecipeList);
