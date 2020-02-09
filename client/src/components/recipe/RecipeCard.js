@@ -20,7 +20,7 @@ function RecipeCard(props) {
 					<CardLink href="#">Edit</CardLink>
 				</CardBody>
 			</Card>
-			<RecipeModal toggle={toggle} modal={modal} />
+			<RecipeModal toggle={toggle} modal={modal} recipe={recipe} />
 		</>
 	)
 }
