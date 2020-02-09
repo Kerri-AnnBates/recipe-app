@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { fetchUserRecipes } from '../../redux/actions/recipe-actions';
-import { Button } from 'reactstrap';
+import { Button, Row, Col } from 'reactstrap';
 
 // Components
 import RecipeCard from './RecipeCard';
@@ -25,14 +25,17 @@ function RecipeList(props) {
 				<div className="container">
 					<h1>Your Recipes</h1>
 					<Button color="success" onClick={toAddRecipe}>Add Recipe</Button>
-					<div className="recipes-wrapper">
-						{recipes.length === 0 ? <p>You have no recipes yet...</p> :
-							recipes.map(recipe => (
-								<RecipeCard
-									key={recipe.id}
-									recipe={recipe}
-								/>
-							))}
+					<div className="recipes-wrapper" style={{margin: "20px auto"}}>
+						<Row>
+							{recipes.length === 0 ? <p>You have no recipes yet...</p> :
+								recipes.map(recipe => (
+									<Col sm="6" key={recipe.id}>
+										<RecipeCard
+											recipe={recipe}
+										/>
+									</Col>
+								))}
+						</Row>
 					</div>
 				</div>
 			</div>
