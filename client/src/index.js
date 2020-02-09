@@ -10,33 +10,9 @@ import logger from 'redux-logger';
 import reducer from './redux/reducer';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles/app.scss';
-import { loadData, saveData } from './localData/localData';
-import userReducer from './redux/reducer/userReducer';
-
-// Persist user data after log import 
-// const persistedData = loadData();
-const initialState = reducer.initialState
-// const persistedData = initialState
-const persistedData = {
-	userReducer: {
-		...userReducer,
-		loggedInUser: {
-			id: 1,
-			name: 'test'
-		}
-	}
-}
-
-
 
 // Create store
-const store = createStore(reducer, persistedData, applyMiddleware(thunk, logger));
-console.log(store.getState())
-// store.subscribe(() => {
-// 	saveData({
-// 		user: store.getState().loggedInUser
-// 	});
-// })
+const store = createStore(reducer, applyMiddleware(thunk, logger));
 
 ReactDOM.render(
 	<Provider store={store}>

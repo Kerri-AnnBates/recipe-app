@@ -1,27 +1,17 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { fetchUserRecipes } from '../../redux/actions/recipe-actions';
-import { axiosWithAuth } from '../../protected/axiosWithAuth';
 import { Button } from 'reactstrap';
 
 // Components
 import RecipeCard from './RecipeCard';
 
 function RecipeList(props) {
-	const { fetchUserRecipes, recipes, loggedInUser, loggedIn } = props;
-
-	console.log("Logged in user:", loggedInUser, "logged in:", loggedIn);
-
-	async function getProfile() {
-		// Wait for profile to be fetched.
-		return await axiosWithAuth().get('http://localhost:5000/api/users/profile');
-
-	}
+	const { fetchUserRecipes, recipes, loggedInUser } = props;
 
 	// Fetch recipes on load
 	useEffect(() => {
-		// Then get recipes after user info has been fetched.
-		getProfile().then(res => fetchUserRecipes(res.data.id));
+		fetchUserRecipes(loggedInUser.id);
 	}, []);
 
 	// redirect to add recipe page

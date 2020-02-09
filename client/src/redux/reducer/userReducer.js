@@ -10,7 +10,7 @@ import {
 const initialState = {
 	isLoggingIn: false,
 	loggedIn: false,
-	loggedInUser: {},
+	loggedInUser: JSON.parse(localStorage.getItem('user')) || null,
 	isRegistering: false,
 	isRegistered: false,
 	error: null,
@@ -48,12 +48,11 @@ function userReducer(state = initialState, action) {
 				error: null
 			}
 		case LOGIN_USER_SUCCESS:
-			localStorage.setItem('token', action.payload.token);
 			return {
 				...state,
 				isLoggingIn: false,
 				loggedIn: true,
-				loggedInUser: action.payload.userInfo,
+				loggedInUser: action.payload,
 				error: null
 			}
 		case LOGIN_USER_FAIL:

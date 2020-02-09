@@ -19,10 +19,12 @@ export const loginUser = (creds) => (dispatch) => {
 
 			// save token
 			localStorage.setItem('token', res.data.token);
+			// save user
+			localStorage.setItem('user', JSON.stringify(res.data.userInfo));
 
 			dispatch({
 				type: LOGIN_USER_SUCCESS,
-				payload: res.data
+				payload: res.data.userInfo
 			});
 		})
 		.catch(error => {
