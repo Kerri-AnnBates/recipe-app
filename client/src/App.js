@@ -32,7 +32,7 @@ function App() {
       <Route path='/edit' component={EditRecipe} />
       <Route path='/register' component={Register} />
       <Route path='/add-recipe' component={AddRecipe} />
-			<Route path='recipe/:id/details' component={RecipeDetails} />
+			<PrivateRoute path='/recipe/:id/details' component={RecipeDetails} />
       <Footer />
     </div>
   )

@@ -1,5 +1,6 @@
 import React from 'react';
-import { Card, CardTitle, CardText, CardBody, CardLink } from 'reactstrap';
+import { Link } from 'react-router-dom';
+import { Card, CardTitle, CardText, CardBody } from 'reactstrap';
 
 function RecipeCard(props) {
 	const { recipe } = props;
@@ -12,7 +13,8 @@ function RecipeCard(props) {
 					<CardText>{recipe.description}</CardText>
 				</CardBody>
 				<CardBody className="card-links">
-					<CardLink href="#">Edit</CardLink>
+					<Link to={`/recipe/${recipe.id}/details`}>Details</Link>
+					{/* <Link>Edit</Link> */}
 				</CardBody>
 			</Card>
 		</>
