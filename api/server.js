@@ -13,8 +13,4 @@ server.use('/api/users', userRoute);
 server.use('/api/recipes', recipeRoute);
 server.use('/api/auth', authRoute);
 
-server.get('/', (req, res) => {
-   res.send('Fetch me some recipes!');
-});
-
 module.exports = server;
