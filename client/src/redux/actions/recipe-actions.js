@@ -1,6 +1,4 @@
 import { axiosWithAuth } from '../../protected/axiosWithAuth';
-import axios from 'axios';
-
 import {
 	FETCH_DATA_START,
 	FETCH_DATA_SUCCESS,
@@ -39,9 +37,8 @@ export const fetchUserRecipes = (id) => dispatch => {
 export const fetchRecipeDetails = (id) => dispatch => {
 	dispatch({ type: FETCH_RECIPE_DETAILS_START });
 
-	axios.get(`http://localhost:5000/api/recipes/${id}`)
+	axiosWithAuth().get(`http://localhost:5000/api/recipes/${id}`)
 		.then(res => {
-			console.log(res.data);
 
 			dispatch({
 				type: FETCH_RECIPE_DETAILS_SUCCESS,
