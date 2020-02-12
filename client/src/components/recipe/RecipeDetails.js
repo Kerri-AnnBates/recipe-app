@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
+import { Button } from 'reactstrap';
 import { fetchRecipeDetails } from '../../redux/actions/recipe-actions';
 
 function RecipeDetails(props) {
@@ -11,12 +12,20 @@ function RecipeDetails(props) {
 		fetchRecipeDetails(id);
 	}, [])
 
+	function goBack() {
+		props.history.push('/recipes');
+	}
+
 	return (
 		<div>
 			<div className="container">
 				{isFetching && <p>Loading recipe...</p>}
 				{recipeDetails && (
 					<div className="recipe-details">
+						<Button
+							outline
+							onClick={goBack}
+						>Go Back</Button>
 						<section>
 							<h1>{recipeDetails.title}</h1>
 							<p>Description:</p>
