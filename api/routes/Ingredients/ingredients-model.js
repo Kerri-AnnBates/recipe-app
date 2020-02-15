@@ -3,7 +3,8 @@ const db = require('../../../database/dbConfig');
 module.exports = {
 	getIngredientsByRecipe,
 	getAll,
-	insert
+	insert,
+	addIngredientToRecipe,
 }
 
 function getIngredientsByRecipe(recipeId) {
@@ -23,4 +24,9 @@ function getAll() {
 function insert(data) {
 	return db('ingredients')
 		.insert(data);
+}
+
+function addIngredientToRecipe(data) {
+	return db('recipes_ingredients')
+		.insert(data)
 }

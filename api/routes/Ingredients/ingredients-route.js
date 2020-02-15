@@ -25,5 +25,19 @@ router.post('/', (req, res) => {
 		})
 })
 
+// POST ingredient to recipe
+router.post('/:id', (req, res) => {
+	const data = req.body;
+
+	Ingredients.addIngredientToRecipe(data)
+		.then(count => {
+			res.status(201).json(count);
+		})
+		.catch(err => {
+			res.status(500).json({ message: 'Unable to add recipe', error: err });
+		})
+
+})
+
 
 module.exports = router;
