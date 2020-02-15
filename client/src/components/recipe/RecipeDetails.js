@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { Button } from 'reactstrap';
+import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
 import { fetchRecipeDetails } from '../../redux/actions/recipe-actions';
 
 function RecipeDetails(props) {
@@ -33,19 +33,23 @@ function RecipeDetails(props) {
 						</section>
 						<section>
 							<h2>Ingredients</h2>
-							<ul>
-								{recipeDetails.ingredients.map(ingredient => (
-									<li key={ingredient.id}>{ingredient.name}</li>
-								))}
-							</ul>
+							<Form>
+								<FormGroup check>
+									{recipeDetails.ingredients.map(ingredient => (
+										<Label check key={ingredient.id} style={{ width: "100%", margin: "5px 0" }}>
+											<Input type="checkbox" name="ingredient" /> <span style={{ marginLeft: "5px" }}>{ingredient.name}</span>
+										</Label>
+									))}
+								</FormGroup>
+							</Form>
 						</section>
 						<section>
 							<h2>Steps</h2>
-							<ul>
+							<ol>
 								{recipeDetails.steps.map(step => (
 									<li key={step.id}>{step.instruction}</li>
 								))}
-							</ul>
+							</ol>
 						</section>
 					</div>
 				)}
