@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
 import { fetchRecipeDetails } from '../../redux/actions/recipe-actions';
@@ -7,6 +7,11 @@ function RecipeDetails(props) {
 
 	const { fetchRecipeDetails, recipeDetails, isFetching } = props;
 	const id = props.match.params.id;
+	const [isChecked, setIsChecked] = useState(false);
+
+	function handleChange(e) {
+		setIsChecked(e.target.checked);
+	}
 
 	useEffect(() => {
 		fetchRecipeDetails(id);
@@ -33,11 +38,17 @@ function RecipeDetails(props) {
 						</section>
 						<section>
 							<h2>Ingredients</h2>
+							<p>You have 0 / {recipeDetails.ingredients.length} ingredients.</p>
 							<Form>
 								<FormGroup check>
 									{recipeDetails.ingredients.map(ingredient => (
 										<Label check key={ingredient.id} style={{ width: "100%", margin: "5px 0" }}>
-											<Input type="checkbox" name="ingredient" /> <span style={{ marginLeft: "5px" }}>{ingredient.name}</span>
+											<Input
+												type="checkbox"
+												name="ingredient"
+												onChange={handleChange}
+												checked={isChecked}
+											/> <span style={{ marginLeft: "5px" }}>{ingredient.name}</span>
 										</Label>
 									))}
 								</FormGroup>
