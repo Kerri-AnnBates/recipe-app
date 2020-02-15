@@ -6,8 +6,11 @@ import {
 	FETCH_RECIPE_DETAILS_START,
 	FETCH_RECIPE_DETAILS_SUCCESS,
 	FETCH_RECIPE_DETAILS_FAIL,
-	ADD_DATA_START,
+	ADD_RECIPE_START,
+	ADD_RECIPE_SUCCESS,
+	ADD_RECIPE_FAIL
 } from './types';
+import Axios from 'axios';
 
 
 // fetch recipes by user id
@@ -54,6 +57,16 @@ export const fetchRecipeDetails = (id) => dispatch => {
 }
 
 // Post a recipe
-export const addRecipe = () => dispatch => {
-	dispatch({ type: ADD_DATA_START });
+export const addRecipe = (userId, recipeData) => dispatch => {
+
+	dispatch({ type: ADD_RECIPE_START });
+
+	axiosWithAuth().post(`http://localhost:5000/api/users/${userId}/recipes`, recipeData)
+		.then(res => {
+
+			dispatch({ type: ADD_RECIPE_SUCCESS, payload: res.data })
+		})
+		.catch(err => {
+			dispatch({ type: ADD_RECIPE_FAIL, payload: err })
+		})
 }

@@ -5,13 +5,18 @@ import {
 	FETCH_RECIPE_DETAILS_START,
 	FETCH_RECIPE_DETAILS_SUCCESS,
 	FETCH_RECIPE_DETAILS_FAIL,
+	ADD_RECIPE_START,
+	ADD_RECIPE_SUCCESS,
+	ADD_RECIPE_FAIL
 } from '../actions/types';
 
 const initialState = {
 	isFetching: false,
 	error: null,
 	recipes: [],
-	recipeDetails: null
+	recipeDetails: null,
+	addedRecipe: false,
+	isAdding: false
 }
 
 function recipesReducer(state = initialState, action) {
@@ -55,6 +60,25 @@ function recipesReducer(state = initialState, action) {
 				isFetching: false,
 				recipeDetails: null,
 				error: action.payload
+			}
+		case ADD_RECIPE_START:
+			return {
+				...state,
+				isAdding: true,
+				error: null
+			}
+		case ADD_RECIPE_SUCCESS:
+			return {
+				...state,
+				isAdding: false,
+				addedRecipe: true,
+				error: null
+			}
+		case ADD_RECIPE_FAIL:
+			return {
+				...state,
+				addedRecipe: false,
+				error: null
 			}
 		default:
 			return state;

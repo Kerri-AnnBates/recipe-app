@@ -68,7 +68,7 @@ router.post('/:id/recipes', restricted, (req, res) => {
 			res.status(201).json(recipe);
 		})
 		.catch(error => {
-			res.status(500).json({ message: 'Problems adding recipe.' });
+			res.status(500).json({ message: 'Problems adding recipe.', error: err });
 		})
 });
 
