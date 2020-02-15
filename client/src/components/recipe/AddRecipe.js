@@ -36,6 +36,8 @@ function AddRecipe(props) {
 				'recipe-title': '',
 				description: ''
 			});
+			props.history.push('/add-ingredients');
+
 		} else {
 			props.history.push('/login');
 		}

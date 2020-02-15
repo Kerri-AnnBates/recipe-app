@@ -22,7 +22,6 @@ exports.up = function (knex) {
 				.onDelete('CASCADE');
 
 			tbl.string('title', 128)
-				.unique()
 				.notNullable();
 
 			tbl.string('description', 255)

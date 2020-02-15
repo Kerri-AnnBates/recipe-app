@@ -18,24 +18,26 @@ import RecipeDetails from './components/recipe/RecipeDetails';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fab } from '@fortawesome/free-brands-svg-icons';
 import { faSave, faList, faTasks } from '@fortawesome/free-solid-svg-icons';
+import AddIngredients from './components/recipe/AddIngredients';
 
 library.add(fab, faSave, faList, faTasks);
 
 function App() {
 
-  return (
-    <div className="App">
-      <Header />
-      <Route exact path='/' component={Home} />
-      <Route path='/login' component={Login} />
-      <PrivateRoute path='/recipes' component={RecipeList} />
-      <Route path='/edit' component={EditRecipe} />
-      <Route path='/register' component={Register} />
-      <Route path='/add-recipe' component={AddRecipe} />
+	return (
+		<div className="App">
+			<Header />
+			<Route exact path='/' component={Home} />
+			<Route path='/login' component={Login} />
+			<PrivateRoute path='/recipes' component={RecipeList} />
+			<Route path='/edit' component={EditRecipe} />
+			<Route path='/register' component={Register} />
+			<Route path='/add-recipe' component={AddRecipe} />
 			<PrivateRoute path='/recipe/:id/details' component={RecipeDetails} />
-      <Footer />
-    </div>
-  )
+			<PrivateRoute path='/add-ingredients' component={AddIngredients} />
+			<Footer />
+		</div>
+	)
 }
 
 export default App;
