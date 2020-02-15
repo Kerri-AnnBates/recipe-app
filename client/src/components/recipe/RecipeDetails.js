@@ -47,7 +47,7 @@ function RecipeDetails(props) {
 												type="checkbox"
 												name="ingredient"
 												onChange={handleChange}
-												checked={isChecked}
+												checked={ingredient.has_ingredients}
 											/> <span style={{ marginLeft: "5px" }}>{ingredient.name}</span>
 										</Label>
 									))}
