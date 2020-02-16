@@ -10,7 +10,6 @@ import {
 	ADD_RECIPE_SUCCESS,
 	ADD_RECIPE_FAIL
 } from './types';
-import Axios from 'axios';
 
 
 // fetch recipes by user id

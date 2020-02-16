@@ -5,7 +5,7 @@ import { addRecipe } from '../../redux/actions/recipe-actions';
 
 function AddRecipe(props) {
 
-	const { addRecipe, loggedInUser, loggedIn } = props;
+	const { addRecipe, loggedInUser } = props;
 
 	const [userInput, setUserInput] = useState({
 		'recipe-title': '',
