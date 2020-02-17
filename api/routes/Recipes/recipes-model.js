@@ -22,7 +22,7 @@ function findById(id) {
 
 function findByIdDetails(id) {
 	const ingredients = db('ingredients')
-		.join('recipes_ingredients', 'ingredients.id', 'recipes_ingredients.id')
+		.join('recipes_ingredients', 'ingredients.id', 'recipes_ingredients.ingredient_id')
 		.where('recipes_ingredients.recipe_id', id);
 
 	const steps = db('steps')
@@ -32,11 +32,11 @@ function findByIdDetails(id) {
 		.where('id', id)
 		.first();
 
-	const promises = [recipe, steps, ingredients];
+	const promises = [ingredients, steps, recipe];
 
 	return Promise.all(promises)
 		.then(results => {
-			const [recipe, steps, ingredients] = results;
+			const [ingredients, steps, recipe] = results;
 			recipe.ingredients = ingredients;
 			recipe.steps = steps;
 			// console.log(recipe)

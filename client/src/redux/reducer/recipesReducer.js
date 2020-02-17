@@ -71,7 +71,7 @@ function recipesReducer(state = initialState, action) {
 			return {
 				...state,
 				isAdding: false,
-				addedRecipe: true,
+				addedRecipe: action.payload,
 				error: null
 			}
 		case ADD_RECIPE_FAIL:

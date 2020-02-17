@@ -13,7 +13,7 @@ function getIngredientsByRecipe(recipeId) {
 	// where ri.recipe_id = 1;
 
 	return db('ingredients')
-		.join('recipes_ingredients', 'ingredients.id', 'recipes_ingredients.id')
+		.join('recipes_ingredients', 'ingredients.id', 'recipes_ingredients.ingredient_id')
 		.where('recipes_ingredients.recipe_id', recipeId);
 }
 

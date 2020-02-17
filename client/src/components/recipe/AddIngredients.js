@@ -1,17 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { Button } from 'reactstrap';
-import { getIngredients } from '../../redux/actions/ingredient-actions';
+import { getIngredients, addIngredientsToRecipe } from '../../redux/actions/ingredient-actions';
 
 function AddIngredients(props) {
 
-	const { getIngredients, ingredients, isFetching } = props;
+	const { getIngredients, ingredients, isFetching, addedRecipe, addIngredientsToRecipe } = props;
 	const [search, setSearch] = useState('');
 	const [filteredIngredients, setFilteredIngredients] = useState([]);
 
-	function handleChange(e) {
-		setSearch(e.target.value)
-	}
 
 	useEffect(() => {
 		getIngredients();
@@ -29,6 +26,24 @@ function AddIngredients(props) {
 		);
 	}, [search])
 
+	function handleChange(e) {
+		setSearch(e.target.value)
+	}
+
+	function AddIngredientToRecipe(ingredient) {
+		// {
+		// 	"recipe_id": 4,
+		// 		"ingredient_id": 4,
+		// 			"amount": 3
+		// }
+		console.log(ingredient);
+		const data = {
+			"recipe_id": addedRecipe,
+			"ingredient_id": ingredient.id,
+		}
+		console.log(data);
+		addIngredientsToRecipe(addedRecipe, data);
+	}
 	return (
 		<div>
 			<div className="container">
@@ -49,7 +64,7 @@ function AddIngredients(props) {
 						{isFetching && (<p>Loading ingredients...</p>)}
 						<ul>
 							{!isFetching && filteredIngredients.map(ingredient => (
-								<li key={ingredient.id}>{ingredient.name}<Button color="primary">Add</Button></li>
+								<li key={ingredient.id}>{ingredient.name}<Button color="primary" onClick={() => AddIngredientToRecipe(ingredient)}>Add</Button></li>
 							))}
 						</ul>
 					</div>
@@ -66,10 +81,11 @@ function AddIngredients(props) {
 function mapStateToProps(state) {
 	return {
 		isFetching: state.ingredientsReducer.isFetching,
-		ingredients: state.ingredientsReducer.ingredients
+		ingredients: state.ingredientsReducer.ingredients,
+		addedRecipe: state.recipesReducer.addedRecipe
 	}
 }
 
 export default connect(
-	mapStateToProps, { getIngredients }
+	mapStateToProps, { getIngredients, addIngredientsToRecipe }
 )(AddIngredients);

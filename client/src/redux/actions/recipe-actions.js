@@ -63,7 +63,7 @@ export const addRecipe = (userId, recipeData) => dispatch => {
 	axiosWithAuth().post(`http://localhost:5000/api/users/${userId}/recipes`, recipeData)
 		.then(res => {
 
-			dispatch({ type: ADD_RECIPE_SUCCESS, payload: res.data })
+			dispatch({ type: ADD_RECIPE_SUCCESS, payload: res.data[0] })
 		})
 		.catch(err => {
 			dispatch({ type: ADD_RECIPE_FAIL, payload: err })
