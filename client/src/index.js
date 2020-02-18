@@ -8,11 +8,12 @@ import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import logger from 'redux-logger';
 import reducer from './redux/reducer';
+import { composeWithDevTools } from 'redux-devtools-extension';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles/app.scss';
 
 // Create store
-const store = createStore(reducer, applyMiddleware(thunk, logger));
+const store = createStore(reducer, composeWithDevTools(applyMiddleware(thunk, logger)));
 
 ReactDOM.render(
 	<Provider store={store}>
