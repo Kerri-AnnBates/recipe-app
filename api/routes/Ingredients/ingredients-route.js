@@ -27,10 +27,12 @@ router.post('/', (req, res) => {
 
 // POST ingredient to recipe
 router.post('/:id', (req, res) => {
-	const data = req.body;
+	const ingredientId = req.params.id;
+	const data = { ...req.body, ingredient_id: ingredientId };
 
 	Ingredients.addIngredientToRecipe(data)
 		.then(count => {
+			// Currently returns the id of recipe_ingredient combo. [26]
 			res.status(201).json(count);
 		})
 		.catch(err => {
