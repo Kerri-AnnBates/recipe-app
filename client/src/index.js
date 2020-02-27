@@ -13,7 +13,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles/app.scss';
 
 // Create store
-const store = createStore(reducer, composeWithDevTools(applyMiddleware(thunk, logger)));
+const store = createStore(reducer, composeWithDevTools(applyMiddleware(thunk)));
 
 ReactDOM.render(
 	<Provider store={store}>

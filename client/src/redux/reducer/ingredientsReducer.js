@@ -15,7 +15,7 @@ const initialState = {
 	error: null,
 	ingredients: [],
 	isAdding: false,
-	added: null,
+	added: false,
 	addedIngredients: []
 }
 
@@ -44,20 +44,21 @@ function ingredientsReducer(state = initialState, action) {
 			return {
 				...state,
 				isAdding: true,
-				added: null,
+				added: false,
 				error: null
 			}
 		case ADD_INGREDIENT_TO_RECIPE_SUCCESS:
 			return {
 				...state,
 				isAdding: false,
-				added: action.payload,
+				added: true,
 				error: null
 			}
 		case ADD_INGREDIENT_TO_RECIPE_FAIL:
 			return {
 				...state,
-				added: null,
+				added: false,
+				isAdding: false,
 				error: action.payload
 			}
 		case FETCH_ADDED_INGREDIENTS_START:

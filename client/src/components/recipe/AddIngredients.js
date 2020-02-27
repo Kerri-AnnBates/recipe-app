@@ -11,7 +11,8 @@ function AddIngredients(props) {
 		addedRecipe,
 		addIngredientsToRecipe,
 		getIngredientsByRecipeId,
-		added
+		added,
+		addedIngredients
 	} = props;
 	const [search, setSearch] = useState('');
 	const [filteredIngredients, setFilteredIngredients] = useState([]);
@@ -34,7 +35,8 @@ function AddIngredients(props) {
 	}, [search])
 
 	useEffect(() => {
-		getIngredientsByRecipeId(addedRecipe.id);
+		getIngredientsByRecipeId(addedRecipe);
+		console.log("Added ingredient", addedIngredients);
 	}, [added])
 
 	function handleChange(e) {
@@ -44,9 +46,8 @@ function AddIngredients(props) {
 	function AddIngredientToRecipe(ingredient) {
 		const data = {
 			"recipe_id": addedRecipe,
-			"ingredient_id": ingredient.id,
 		}
-		addIngredientsToRecipe(addedRecipe.id, data);
+		addIngredientsToRecipe(ingredient.id, data);
 	}
 	return (
 		<div>
@@ -90,7 +91,9 @@ function mapStateToProps(state) {
 	return {
 		isFetching: state.ingredientsReducer.isFetching,
 		ingredients: state.ingredientsReducer.ingredients,
-		addedRecipe: state.recipesReducer.addedRecipe
+		addedRecipe: state.recipesReducer.addedRecipe,
+		addedIngredients: state.ingredientsReducer.addedIngredients,
+		added: state.ingredientsReducer.added
 	}
 }
 
