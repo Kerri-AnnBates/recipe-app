@@ -77,7 +77,15 @@ function AddIngredients(props) {
 				<section>
 					<h2>Included ingredients</h2>
 					<div>
-						list of ingredients
+
+						{addedIngredients.length > 0 ?
+							(<ul>
+								{addedIngredients.map(ingredient => (
+									<li key={ingredient.id}>{ingredient.name}</li>
+								))}
+							</ul>) : (<p>No ingredients added yet.</p>)
+						}
+
 					</div>
 				</section>
 				<Button>Save</Button>
