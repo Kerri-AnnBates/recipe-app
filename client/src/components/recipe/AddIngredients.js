@@ -1,11 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { Button } from 'reactstrap';
-import { getIngredients, addIngredientsToRecipe } from '../../redux/actions/ingredient-actions';
+import { getIngredients, addIngredientsToRecipe, getIngredientsByRecipeId } from '../../redux/actions/ingredient-actions';
 
 function AddIngredients(props) {
 
-	const { getIngredients, ingredients, isFetching, addedRecipe, addIngredientsToRecipe } = props;
+	const { getIngredients,
+		ingredients,
+		isFetching,
+		addedRecipe,
+		addIngredientsToRecipe,
+		getIngredientsByRecipeId,
+		added
+	} = props;
 	const [search, setSearch] = useState('');
 	const [filteredIngredients, setFilteredIngredients] = useState([]);
 
@@ -26,23 +33,20 @@ function AddIngredients(props) {
 		);
 	}, [search])
 
+	useEffect(() => {
+		getIngredientsByRecipeId(addedRecipe.id);
+	}, [added])
+
 	function handleChange(e) {
 		setSearch(e.target.value)
 	}
 
 	function AddIngredientToRecipe(ingredient) {
-		// {
-		// 	"recipe_id": 4,
-		// 		"ingredient_id": 4,
-		// 			"amount": 3
-		// }
-		console.log(ingredient);
 		const data = {
 			"recipe_id": addedRecipe,
 			"ingredient_id": ingredient.id,
 		}
-		console.log(data);
-		addIngredientsToRecipe(addedRecipe, data);
+		addIngredientsToRecipe(addedRecipe.id, data);
 	}
 	return (
 		<div>
@@ -71,7 +75,11 @@ function AddIngredients(props) {
 				</section>
 				<section>
 					<h2>Included ingredients</h2>
+					<div>
+						list of ingredients
+					</div>
 				</section>
+				<Button>Save</Button>
 			</div>
 		</div >
 	)
@@ -87,5 +95,5 @@ function mapStateToProps(state) {
 }
 
 export default connect(
-	mapStateToProps, { getIngredients, addIngredientsToRecipe }
+	mapStateToProps, { getIngredients, addIngredientsToRecipe, getIngredientsByRecipeId }
 )(AddIngredients);
