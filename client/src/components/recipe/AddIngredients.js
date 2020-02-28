@@ -79,11 +79,11 @@ function AddIngredients(props) {
 					<div>
 
 						{addedIngredients.length > 0 ?
-							(<ul>
+							(<div className="recipe-ingredients wrapper">
 								{addedIngredients.map(ingredient => (
-									<li key={ingredient.id}>{ingredient.name}</li>
+									<div className="ingredient-item" key={ingredient.id}>{ingredient.name} <Button color="danger">Remove</Button></div>
 								))}
-							</ul>) : (<p>No ingredients added yet.</p>)
+							</div>) : (<p>No ingredients added yet.</p>)
 						}
 
 					</div>
