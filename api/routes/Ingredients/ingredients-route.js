@@ -42,5 +42,18 @@ router.post('/:id', (req, res) => {
 
 })
 
+// DELETE ingredient from recipe
+router.delete('/:id/recipe', (req, res) => {
+	const id = req.params.id;
+
+	Ingredients.removeFromRecipe(id)
+		.then(count => {
+			res.status(200).json(count);
+		})
+		.catch(err => {
+			res.status(500).json({ message: 'Unable to delete ingredient', error: err });
+		})
+})
+
 
 module.exports = router;

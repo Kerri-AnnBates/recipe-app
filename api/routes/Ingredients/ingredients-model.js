@@ -5,6 +5,7 @@ module.exports = {
 	getAll,
 	insert,
 	addIngredientToRecipe,
+	removeFromRecipe
 }
 
 function getIngredientsByRecipe(recipeId) {
@@ -29,4 +30,10 @@ function insert(data) {
 function addIngredientToRecipe(data) {
 	return db('recipes_ingredients')
 		.insert(data)
+}
+
+function removeFromRecipe(id) {
+	return db('recipes_ingredients')
+		.where('id', id)
+		.del();
 }
