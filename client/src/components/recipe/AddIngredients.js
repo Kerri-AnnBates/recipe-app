@@ -49,6 +49,11 @@ function AddIngredients(props) {
 		}
 		addIngredientsToRecipe(ingredient.id, data);
 	}
+
+	// Save and move on to steps
+	function goToSteps() {
+		props.history.push('/add-steps');
+	}
 	return (
 		<div>
 			<div className="container">

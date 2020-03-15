@@ -46,7 +46,7 @@ router.post('/login', (req, res) => {
 			}
 		})
 		.catch(err => {
-			res.status(500).json({ message: 'Problems gettting user', error: err });
+			res.status(500).json({ message: 'Problem logging user in', error: err });
 		})
 
 });

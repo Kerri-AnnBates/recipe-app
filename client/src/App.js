@@ -19,6 +19,7 @@ import { library } from '@fortawesome/fontawesome-svg-core';
 import { fab } from '@fortawesome/free-brands-svg-icons';
 import { faSave, faList, faTasks } from '@fortawesome/free-solid-svg-icons';
 import AddIngredients from './components/recipe/AddIngredients';
+import addSteps from './components/recipe/addSteps';
 
 library.add(fab, faSave, faList, faTasks);
 
@@ -35,6 +36,7 @@ function App() {
 			<Route path='/add-recipe' component={AddRecipe} />
 			<PrivateRoute path='/recipe/:id/details' component={RecipeDetails} />
 			<PrivateRoute path='/add-ingredients' component={AddIngredients} />
+			<PrivateRoute path='/add-steps' component={addSteps} />
 			<Footer />
 		</div>
 	)

@@ -43,6 +43,11 @@ function AddRecipe(props) {
 		}
 	}
 
+	// Redirect back to all recipes page
+	function goBack() {
+		props.history.push('/recipes');
+	}
+
 	return (
 		<div className="add-form">
 			<div className="container">
@@ -55,7 +60,7 @@ function AddRecipe(props) {
 								type="text"
 								name="recipe-title"
 								id="recipe-title"
-								placeholder="Enter your username"
+								placeholder="Enter recipe title"
 								value={userInput['recipe-title']}
 								onChange={handleChange}
 							/>
@@ -71,6 +76,7 @@ function AddRecipe(props) {
 							/>
 						</FormGroup>
 						<Button color="primary">Submit</Button>
+						<Button color="secondary" onClick={goBack}>Cancel</Button>
 					</Form>
 				</div>
 			</div>
